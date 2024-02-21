@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px; /* Adjust font size */
+    }
+
+    .container {
+      max-width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel {
+      display: none;
+      animation: fadein 1s ease-in-out; /* Apply fade-in animation */
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 5px; /* Reduce space below headings */
+      font-size: 14px; /* Adjust font size for headings */
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px; /* Adjust padding for input fields */
+      margin-bottom: 10px; /* Reduce space between input fields */
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // Define a React component for the user information form
+    function UserForm() {
+      const [currentPanel, setCurrentPanel] = React.useState(0);
+      const panels = [
+        <div className="panel active">
+          <h2>Name</h2>
+          <input type="text" placeholder="Enter your name" />
+          <h2>Age</h2>
+          <input type="number" placeholder="Enter your age" />
+          <h2>Gender</h2>
+          <select>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <button className="btn" onClick={() => nextPanel()}>Next</button>
+        </div>,
+        <div className="panel">
+          <h2>Weight</h2>
+          <input type="number" placeholder="Enter your weight in kg" />
+          <h2>Height</h2>
+          <input type="number" placeholder="Enter your height in cm" />
+          <h2>Waist Circumference</h2>
+          <input type="number" placeholder="Enter your waist circumference in cm" />
+          <h2>Hip Circumference</h2>
+          <input type="number" placeholder="Enter your hip circumference in cm" />
+          <h2>Dietary Preferences</h2>
+          <input type="text" placeholder="Enter your dietary preferences" />
+          <button className="btn" onClick={() => submitForm()}>Submit</button>
+        </div>
+      ];
+
+      function nextPanel() {
+        if (currentPanel < panels.length - 1) {
+          setCurrentPanel(currentPanel + 1);
+        }
+      }
+
+      function submitForm() {
+        // You can add your logic to handle form submission here
+        alert('Form submitted!');
+      }
+
+      return (
+        <div className="container">
+          {panels[currentPanel]}
+        </div>
+      );
+    }
+
+    // Mount the UserForm component onto the root div
+    ReactDOM.render(<UserForm />, document.getElementById('root'));
+  </script>
+</body>
+</html>

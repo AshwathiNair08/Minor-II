@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #004AAD, #CB6CE6);
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Set body height to 100% of viewport height */
+}
+
+.container {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Set background color to white with opacity */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.panel {
+  display: none;
+  animation: fadein 1s ease-in-out; /* Apply fade-in animation */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panel.active {
+  display: block;
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green color */
+  color: #fff;
+  border: 1px solid #4CAF50; /* Add border for a more defined button */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition effects */
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  background-color: #45a049; /* Darker shade of green on hover */
+  border-color: #45a049; /* Adjust border color on hover */
+}
+
+/* Button Focus Effect */
+.btn:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4); /* Add focus border */
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  margin-top: 20px; /* Add space between header and form */
+}
+
+form input,
+form select {
+  width: 100%; /* Set input and select elements to full width */
+  padding: 10px;
+  margin-bottom: 20px; /* Add space between each field */
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user-form h2 {
+  margin-bottom: 100px; /* Reduce space between heading and form fields */
+}
